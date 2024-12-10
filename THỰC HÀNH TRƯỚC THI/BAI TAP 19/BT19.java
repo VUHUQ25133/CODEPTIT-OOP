@@ -22,12 +22,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Đọc file
         BufferedReader br = new BufferedReader(new FileReader("VANBAN.in"));
-        Set<String> validWords = new HashSet<>();
+        //Cách 1
+        Set<String> validWords = new TreeSet<>();  // Dùng TreeSet để tự động sắp xếp
         String line;
-
         while ((line = br.readLine()) != null) {
-            // Tách từ trong dòng
-            String[] words = line.split("\\s+");
+            String[] words = line.split("\\s+");   // Tách từ trong dòng
             for (String word : words) {
                 if (isValidWord(word)) {
                     validWords.add(word);
@@ -37,13 +36,36 @@ public class Main {
 
         br.close();
 
-        // Chuyển Set thành List và sắp xếp theo thứ tự từ điển
-        List<String> sortedWords = new ArrayList<>(validWords);
-        Collections.sort(sortedWords);
-
-        // In kết quả
-        for (String word : sortedWords) {
+        for (String word : validWords) {
             System.out.println(word);
         }
+
+
+
+
+        //Cách 2
+            // Set<String> validWords = new HashSet<>();
+            // String line;
+    
+            // while ((line = br.readLine()) != null) {
+            //     // Tách từ trong dòng
+            //     String[] words = line.split("\\s+");
+            //     for (String word : words) {
+            //         if (isValidWord(word)) {
+            //             validWords.add(word);
+            //         }
+            //     }
+            // }
+    
+            // br.close();
+    
+            // // Chuyển Set thành List và sắp xếp theo thứ tự từ điển
+            // List<String> sortedWords = new ArrayList<>(validWords);
+            // Collections.sort(sortedWords);
+    
+            // // In kết quả
+            // for (String word : sortedWords) {
+            //     System.out.println(word);
+            // }
     }
 }
